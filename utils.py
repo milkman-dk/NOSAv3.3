@@ -1,4 +1,4 @@
-﻿# Utilities copied for SJF_NOSAv3 training pipeline.
+﻿# Utilities for SJF_anUNetv3 training pipeline.
 import os
 from typing import Any, Tuple, cast
 import numpy as np
