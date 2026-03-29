@@ -1,0 +1,6 @@
+{
+  "model": "NOSA_v3.1",
+  "best_wt_iou": 0.8312371373176575,
+  "best_wt_threshold": 0.44999998807907104,
+  "epoch": 74
+}
