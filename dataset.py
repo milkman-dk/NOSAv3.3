@@ -1,4 +1,4 @@
-﻿# BraTSDataset copied into SJF_NOSAv3 for training.
+﻿# BraTSDataset loading
 import os
 import random
 from typing import Any, cast
@@ -43,7 +43,6 @@ class BraTSDataset(Dataset):
     def default_transforms(self):
         keys = ["image", "label"]
         tr = Compose([
-            # LoadImaged will be handled in __getitem__ to allow custom normalization
             # Random spatial augmentations
             RandFlipd(keys=keys, prob=0.5, spatial_axis=0),
             RandFlipd(keys=keys, prob=0.5, spatial_axis=1),
@@ -92,7 +91,7 @@ class BraTSDataset(Dataset):
                     continue
                 nii_img = cast(Any, nib).load(file_path)
                 arr = nii_img.get_fdata().astype(np.float32)
-                # standardize layout to CZYX -> take center crop later
+                # standardize layout to CZYX
                 arr = np.transpose(arr, (2,1,0))
                 arr = zscore_normalize(arr)
                 imgs.append(arr)
